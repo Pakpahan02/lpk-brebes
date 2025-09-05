@@ -14,6 +14,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::resource('/user', \App\Http\Controllers\Dashboard\Master\UserController::class);
+        Route::resource('/training-category', \App\Http\Controllers\Dashboard\Master\TrainingCategoryController::class);
     });
 
     Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
