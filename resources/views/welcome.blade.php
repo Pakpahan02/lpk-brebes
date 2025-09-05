@@ -5,46 +5,26 @@
         <div id="default-carousel" class="relative w-full" data-carousel="slide" data-carousel-interval="3000">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                <!-- Item 1 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="{{ asset('img/img-1.jpg') }}"
-                         class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                         alt="Banner 1">
+                @foreach ($banners as $banner)
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('storage/' . $banner->image) }}"
+                            class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="{{ $banner->title }}">
 
-                    <!-- Overlay Gradient -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-yellow-200/40 via-yellow-500/10 to-transparent"></div>
+                        <!-- Overlay Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-yellow-300/60 via-yellow-500/10 to-transparent"></div>
 
-                    <!-- Title -->
-                    <div class="absolute bottom-6 left-6 text-left">
-                        <h2 class="text-white text-2xl md:text-4xl font-bold drop-shadow">
-                            Judul Banner 1
-                        </h2>
-                        <p class="text-white/80 mt-2 text-sm md:text-base">
-                            Deskripsi singkat untuk banner pertama.
-                        </p>
+                        <!-- Title -->
+                        <div class="absolute bottom-6 left-6 text-left">
+                            <h2 class="text-white text-2xl md:text-4xl font-bold text-shadow-lg/30">
+                                {{ $banner->title }}
+                            </h2>
+                            <p class="text-white/80 mt-2 text-sm md:text-base text-shadow-lg/20">
+                                {{ $banner->description }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="{{ asset('img/img-2.jpg') }}"
-                         class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                         alt="Banner 2">
-
-                    <!-- Overlay Gradient -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-yellow-200/40 via-yellow-500/10 to-transparent"></div>
-
-
-                    <!-- Title -->
-                    <div class="absolute bottom-6 left-6 text-left">
-                        <h2 class="text-white text-2xl md:text-4xl font-bold drop-shadow">
-                            Judul Banner 2
-                        </h2>
-                        <p class="text-white/80 mt-2 text-sm md:text-base">
-                            Deskripsi singkat untuk banner kedua.
-                        </p>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Slider indicators -->
@@ -87,89 +67,28 @@
         <h2 class="text-2xl font-bold mb-6 text-center">FAQ</h2>
 
         <div id="accordion-faq">
-            <!-- FAQ 1 -->
-            <h2 id="faq-heading-1">
-                <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-600 border border-b-0 border-gray-200 rounded-t-xl hover:bg-yellow-400 gap-3 transition-colors duration-300"
-                    data-accordion-target="#faq-body-1" aria-expanded="false" aria-controls="faq-body-1">
-                    <span>Kenapa Saya Harus Ikut Pelatihan?</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="faq-body-1"
-                class="accordion-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
-                aria-labelledby="faq-heading-1">
-                <div class="p-5 border border-b-0 border-gray-200">
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+            @foreach ($fqas as $index => $faq)
+                <h2 id="faq-heading-{{ $index }}">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium text-gray-600 border {{ $loop->last ? 'rounded-b-xl' : '' }} {{ $loop->first ? 'rounded-t-xl' : '' }} border-gray-200 hover:bg-yellow-400 gap-3 transition-colors duration-300"
+                        data-accordion-target="#faq-body-{{ $index }}" aria-expanded="false"
+                        aria-controls="faq-body-{{ $index }}">
+                        <span>{{ $faq->title }}</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="faq-body-{{ $index }}"
+                    class="accordion-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+                    aria-labelledby="faq-heading-{{ $index }}">
+                    <div class="p-5 border border-t-0 border-gray-200">
+                        <p class="text-gray-600">{{ $faq->description }}</p>
+                    </div>
                 </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <h2 id="faq-heading-2">
-                <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-600 border border-b-0 border-gray-200 hover:bg-yellow-400 gap-3 transition-colors duration-300"
-                    data-accordion-target="#faq-body-2" aria-expanded="false" aria-controls="faq-body-2">
-                    <span>Berapa Lama Saya Harus Pelatihan?</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="faq-body-2"
-                class="accordion-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
-                aria-labelledby="faq-heading-2">
-                <div class="p-5 border border-b-0 border-gray-200">
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <h2 id="faq-heading-3">
-                <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-600 border border-b-0 border-gray-200 hover:bg-yellow-400 gap-3 transition-colors duration-300"
-                    data-accordion-target="#faq-body-3" aria-expanded="false" aria-controls="faq-body-3">
-                    <span>Apakah Ada Jaminan Kerja?</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="faq-body-3"
-                class="accordion-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
-                aria-labelledby="faq-heading-3">
-                <div class="p-5 border border-b-0 border-gray-200">
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
-            </div>
-
-            <!-- FAQ 4 -->
-            <h2 id="faq-heading-4">
-                <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-600 border border-gray-200 rounded-b-xl hover:bg-yellow-400 gap-3 transition-colors duration-300"
-                    data-accordion-target="#faq-body-4" aria-expanded="false" aria-controls="faq-body-4">
-                    <span>Berapa Biaya Pelatihan Kerja?</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="faq-body-4"
-                class="accordion-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
-                aria-labelledby="faq-heading-4">
-                <div class="p-5 border border-t-0 border-gray-200">
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -177,16 +96,63 @@
     <section class="container mx-auto px-6 py-10">
         <h2 class="text-center text-2xl font-bold mb-6">BERITA & INFORMASI</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach (range(1, 8) as $i)
-                <div class="border rounded-lg shadow overflow-hidden">
-                    <div class="bg-gray-300 h-40"></div>
-                    <div class="p-4">
-                        <h3 class="font-semibold">Thumbnail Label</h3>
-                        <p class="text-sm text-gray-600 mt-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                        <a href="#" class="inline-block mt-3 px-4 py-2 bg-orange-600 text-black text-sm rounded hover:bg-orange-700">Button</a>
+            @forelse ($news as $item)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col">
+                    {{-- Image --}}
+                    <a href="{{ route('news.show', $item->id) }}" class="relative w-full h-[200px] bg-gray-200 overflow-hidden">
+                        @if ($item->image)
+                            <img src="{{ asset('storage/' . $item->image) }}"
+                                alt="{{ $item->title }}"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                width="320" height="200">
+                        @else
+                            <div class="flex items-center justify-center h-full text-gray-400">
+                                Tidak ada gambar
+                            </div>
+                        @endif
+                    </a>
+
+                    {{-- Content --}}
+                    <div class="p-5 flex flex-col flex-1">
+                        <span class="text-xs font-medium text-orange-600 uppercase">
+                            {{ $item->category }}
+                        </span>
+                        <h3 class="font-semibold text-lg mt-2 line-clamp-2 text-gray-800 hover:text-orange-600 transition-colors">
+                            <a href="{{ route('news.show', $item->id) }}">
+                                {{ $item->title }}
+                            </a>
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-2 line-clamp-3">
+                            {{ Str::limit(strip_tags($item->description), 100) }}
+                        </p>
+                        <a href="{{ route('news.show', $item->id) }}"
+                        class="inline-flex items-center mt-4 text-orange-600 text-sm font-medium transition-all duration-300 hover:translate-x-1">
+                            Selengkapnya
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-span-full text-center text-gray-500 py-10">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg">Tidak ada berita yang ditemukan.</p>
+                </div>
+            @endforelse
+        </div>
+
+        {{-- Button Lihat Semua --}}
+        <div class="text-center mt-8">
+            <a href="{{ route('news.index') }}"
+            class="inline-flex items-center px-6 py-3 bg-orange-600 text-white font-medium rounded-lg shadow hover:bg-orange-700 transition-colors duration-300">
+                Lihat Semua Berita
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
         </div>
     </section>
 
