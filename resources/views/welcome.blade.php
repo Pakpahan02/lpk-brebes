@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.front>
 
     {{-- Banner Slider --}}
     <section>

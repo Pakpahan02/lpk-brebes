@@ -9,9 +9,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['auth', 'verified']], function () {
+    Route::get('/', \App\Http\Controllers\Dashboard\DashboardController::class)->name('index');
+
+    Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
+        Route::resource('/user', \App\Http\Controllers\Dashboard\Master\UserController::class);
+    });
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
