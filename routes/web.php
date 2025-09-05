@@ -15,6 +15,10 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::resource('/user', \App\Http\Controllers\Dashboard\Master\UserController::class);
     });
+
+    Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
+        Route::resource('/banner', \App\Http\Controllers\Dashboard\CMS\BannerController::class);
+    });
 });
 
 Route::middleware(['auth'])->group(function () {
