@@ -24,7 +24,7 @@
                 <li><a href="/news" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Loker</a></li>
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Pelatihan</a></li>
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Hubungi Kami</a></li>
+                <li><a href="/contact-us" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Hubungi Kami</a></li>
                 <li><a href="/login" class="text-slate-500 hover:text-slate-700 font-medium">Login</a></li>
             </ul>
         </div>
