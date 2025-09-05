@@ -20,7 +20,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Master')" class="grid">
                     <flux:navlist.item icon="user" :href="route('dashboard.master.user.index')" :current="request()->routeIs('dashboard.master.user.index')" >{{ __('Pengguna') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user" :href="route('dashboard.master.training-category.index')" :current="request()->routeIs('dashboard.index')" >{{ __('Kategori Pelatihan') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user" :href="route('dashboard.master.training-category.index')" :current="request()->routeIs('dashboard.master.training-category.index')" >{{ __('Kategori Pelatihan') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

@@ -12,16 +12,20 @@
     <nav id="navbar" class="bg-white fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto flex items-center justify-between px-6 py-4">
             {{-- Logo --}}
-            <div class="font-bold text-xl text-slate-700">LOGO</div>
+            <div class="font-bold text-xl text-slate-700">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('/img/logo.jpeg') }}" alt="Logo Perusahaan" class="h-10">
+                </a>
+            </div>
 
             {{-- Menu --}}
             <ul class="hidden md:flex flex-1 justify-end ml-10">
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Profile</a></li>
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Lokasi</a></li>
+                <li><a href="/news" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
+                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Loker</a></li>
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Pelatihan</a></li>
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Hubungi Kami</a></li>
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium">Login</a></li>
+                <li><a href="/login" class="text-slate-500 hover:text-slate-700 font-medium">Login</a></li>
             </ul>
         </div>
     </nav>
