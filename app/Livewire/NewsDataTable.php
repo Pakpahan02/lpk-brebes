@@ -44,8 +44,8 @@ final class NewsDataTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('id')
-            ->add('category', function (News $model) {
-                return NewsCategoryEnums::from($model->category)->label();
+            ->add('category_label', function (News $model) {
+                return $model->category->label();
             })
             ->add('title')
             ->add('description')
@@ -65,7 +65,7 @@ final class NewsDataTable extends PowerGridComponent
 
             Column::action('Aksi'),
 
-            Column::make('Category', 'category')
+            Column::make('Category', 'category_label')
                 ->sortable()
                 ->searchable(),
 
