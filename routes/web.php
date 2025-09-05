@@ -23,6 +23,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
         Route::patch('/training/{training}/toggle-visible', [\App\Http\Controllers\Dashboard\CMS\TrainingController::class, 'toggleVisible'])->name('training.toggle-visible');
 
         Route::resource('/news', \App\Http\Controllers\Dashboard\CMS\NewsController::class);
+        Route::resource('/fqa', \App\Http\Controllers\Dashboard\CMS\FQAController::class);
     });
 });
 
