@@ -5,9 +5,13 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+Route::get('/', \App\Http\Controllers\IndexController::class)->name('home');
+
+Route::get('/news', [\App\Http\Controllers\EndUser\News\NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{news}', [\App\Http\Controllers\EndUser\News\NewsController::class, 'show'])->name('news.show');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', \App\Http\Controllers\Dashboard\DashboardController::class)->name('index');
