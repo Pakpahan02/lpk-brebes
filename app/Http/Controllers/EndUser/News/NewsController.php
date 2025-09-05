@@ -38,8 +38,14 @@ class NewsController extends Controller
 
     public function show(News $news)
     {
+        $relatedNews = News::where('id', '!=', $news->id)
+                        ->latest()
+                        ->limit(3)
+                        ->get();
+
         return view('end-user.news.show', [
-            'news' => $news,
+            'news'        => $news,
+            'relatedNews' => $relatedNews,
         ]);
     }
 }

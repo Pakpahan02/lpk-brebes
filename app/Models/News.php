@@ -19,7 +19,7 @@ class News extends Model
         'visible',
     ];
 
-    protected $cast = [
+    protected $casts = [
         'category' => NewsCategoryEnums::class,
     ];
 }
