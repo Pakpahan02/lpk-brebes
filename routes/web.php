@@ -19,6 +19,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
 
     Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
         Route::resource('/banner', \App\Http\Controllers\Dashboard\CMS\BannerController::class);
+        Route::resource('/training', \App\Http\Controllers\Dashboard\CMS\TrainingController::class);
+        Route::patch('/training/{training}/toggle-visible', [\App\Http\Controllers\Dashboard\CMS\TrainingController::class, 'toggleVisible'])->name('training.toggle-visible');
     });
 });
 
