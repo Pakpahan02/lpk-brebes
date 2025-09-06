@@ -76,12 +76,16 @@
 
                     {{-- Deskripsi --}}
                     <div class="mt-4">
-                        <label class="block font-medium mb-1">Deskripsi</label>
-                        <textarea
-                            class="w-full border border-gray-300 rounded px-3 py-2"
+                        <label class="block font-medium mb-1">Deskripsi <span class="text-red-500">*</span></label>
+                        {{-- Input hidden ini yang akan dikirim ke server --}}
+                        <input
+                            id="x"
+                            type="hidden"
                             name="description"
-                            rows="4"
-                        >{{ old('description', $training->description ?? '') }}</textarea>
+                            value="{{ old('description', $training->description ?? '') }}"
+                        >
+                        {{-- Ini adalah editor visual yang dilihat pengguna --}}
+                        <trix-editor input="x" class="bg-white trix-content"></trix-editor>
                         <flux:error name="description" />
                     </div>
 
