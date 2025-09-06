@@ -13,6 +13,9 @@ Route::get('/', \App\Http\Controllers\IndexController::class)->name('home');
 Route::get('/news', [\App\Http\Controllers\EndUser\News\NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{news}', [\App\Http\Controllers\EndUser\News\NewsController::class, 'show'])->name('news.show');
 
+Route::get('/training', [\App\Http\Controllers\EndUser\TrainingController::class, 'index'])->name('training.index');
+Route::get('/training/{training}', [\App\Http\Controllers\EndUser\TrainingController::class, 'show'])->name('training.show');
+
 Route::get('/contact-us', [\App\Http\Controllers\EndUser\ContactUsController::class, 'index'])->name('contact-us.index');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['auth', 'verified']], function () {
