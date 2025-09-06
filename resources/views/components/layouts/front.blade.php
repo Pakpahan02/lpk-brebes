@@ -20,7 +20,7 @@
 
             {{-- Menu --}}
             <ul class="hidden md:flex flex-1 justify-end ml-10">
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Profile</a></li>
+                <li><a href="/profile" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Profile</a></li>
                 <li><a href="/news" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
                 <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Loker</a></li>
                 <li><a href="/training" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Pelatihan</a></li>

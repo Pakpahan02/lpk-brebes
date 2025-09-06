@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 Route::get('/', \App\Http\Controllers\IndexController::class)->name('home');
 
+Route::get('/profile', [\App\Http\Controllers\EndUser\ProfileController::class, 'index'])->name('profile.index');
+
 Route::get('/news', [\App\Http\Controllers\EndUser\News\NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{news}', [\App\Http\Controllers\EndUser\News\NewsController::class, 'show'])->name('news.show');
 
