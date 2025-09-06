@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Footer;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+            $footerData = Cache::remember('footer_data', 60 * 60, function () {
+                return Footer::first();
+            });
+
+            $view->with('footerData', $footerData);
+        });
     }
 }

@@ -41,27 +41,48 @@
 
     {{-- Footer --}}
     <footer class="bg-gray-800 text-gray-200 mt-10">
-        <div class="container mx-auto px-6 py-8 grid md:grid-cols-3 gap-6">
-            <div>
-                <h4 class="font-semibold mb-2">Alamat</h4>
-                <p>Jl. Contoh No. 123, Jakarta</p>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-2">Informasi</h4>
-                <ul class="space-y-1">
-                    <li><a href="#" class="hover:underline">Tentang Kami</a></li>
-                    <li><a href="#" class="hover:underline">Kontak</a></li>
-                    <li><a href="#" class="hover:underline">FAQ</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-2">Sosial Media</h4>
-                <ul class="space-y-1">
-                    <li><a href="#" class="hover:underline">Facebook</a></li>
-                    <li><a href="#" class="hover:underline">Instagram</a></li>
-                    <li><a href="#" class="hover:underline">LinkedIn</a></li>
-                </ul>
-            </div>
+        <div class="container mx-auto px-6 py-8 grid md:grid-cols-3 gap-8">
+            {{-- Gunakan @if untuk mencegah error jika data footer belum diisi --}}
+            @if ($footerData)
+                <div>
+                    <h4 class="font-semibold mb-2">Alamat</h4>
+                    {{-- Ganti alamat statis dengan data dari database --}}
+                    <p class="whitespace-pre-line">{{ $footerData->address }}</p>
+                </div>
+                <div>
+                    {{-- Kolom ini bisa Anda isi dengan link statis atau dinamis --}}
+                    <h4 class="font-semibold mb-2">Informasi</h4>
+                    <ul class="space-y-1">
+                        <li><a href="/profile" class="hover:underline">Tentang Kami</a></li>
+                        <li><a href="/contact-us" class="hover:underline">Kontak</a></li>
+                        <li><a href="#" class="hover:underline">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">Sosial Media</h4>
+                    <ul class="space-y-1">
+                        {{-- Tampilkan hanya jika link Facebook diisi --}}
+                        @if ($footerData->facebook)
+                            <li><a href="{{ $footerData->facebook }}" target="_blank" class="hover:underline">Facebook</a></li>
+                        @endif
+
+                        {{-- Tampilkan hanya jika link Instagram diisi --}}
+                        @if ($footerData->instagram)
+                            <li><a href="{{ $footerData->instagram }}" target="_blank" class="hover:underline">Instagram</a></li>
+                        @endif
+
+                        {{-- Tampilkan hanya jika link LinkedIn diisi --}}
+                        @if ($footerData->linkedin)
+                            <li><a href="{{ $footerData->linkedin }}" target="_blank" class="hover:underline">LinkedIn</a></li>
+                        @endif
+                    </ul>
+                </div>
+            @else
+                {{-- Tampilan fallback jika data footer belum ada --}}
+                <div class="md:col-span-3 text-center">
+                    <p>Informasi footer belum diatur.</p>
+                </div>
+            @endif
         </div>
         <div class="text-center py-4 border-t border-gray-700">
             &copy; {{ date('Y') }} Website Pelatihan. All rights reserved.
