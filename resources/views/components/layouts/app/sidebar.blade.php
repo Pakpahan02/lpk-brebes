@@ -30,8 +30,7 @@
                     <flux:navlist.item icon="home" :href="route('dashboard.cms.news.index')" :current="request()->routeIs('dashboard.cms.news.index')" >{{ __('Berita') }}</flux:navlist.item>
                     <flux:navlist.item icon="user" :href="route('dashboard.cms.training.index')" :current="request()->routeIs('dashboard.cms.training.index')" >{{ __('Pelatihan') }}</flux:navlist.item>
                     <flux:navlist.item icon="user" :href="route('dashboard.cms.fqa.index')" :current="request()->routeIs('dashboard.cms.fqa.index')" >{{ __('FQA') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user" :href="route('dashboard.index')" :current="request()->routeIs('dashboard.index')" >{{ __('Footer') }}</flux:navlist.item>
-                    <flux:navlist.item icon="user" :href="route('dashboard.index')" :current="request()->routeIs('dashboard.index')" >{{ __('Loker') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user" :href="route('dashboard.cms.footer.index')" :current="request()->routeIs('dashboard.cms.footer.index')" >{{ __('Footer') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

@@ -35,6 +35,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
 
         Route::resource('/news', \App\Http\Controllers\Dashboard\CMS\NewsController::class);
         Route::resource('/fqa', \App\Http\Controllers\Dashboard\CMS\FQAController::class);
+        Route::get('/footer', [\App\Http\Controllers\Dashboard\CMS\FooterController::class, 'index'])->name('footer.index');
     });
 });
 
