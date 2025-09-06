@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
-        @include('partials.head')
+        {{-- Ganti 'partials.head' dengan meta tag dasar jika diperlukan --}}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
-    <body class="min-h-screen bg-neutral-100 antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
-        <div class="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-            <div class="flex w-full max-w-md flex-col gap-6">
-                <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
-                    <span class="flex h-9 w-9 items-center justify-center rounded-md">
-                        <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" />
-                    </span>
+    <body class="min-h-screen bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 antialiased">
+        <div class="flex min-h-svh flex-col items-center justify-center p-6">
+            <div class="mb-8 text-center">
+                <a href="{{ route('home') }}" wire:navigate>
 
-                    <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
+                    <img src="{{ asset('/img/logo.jpeg') }}" alt="Logo Perusahaan" class="mx-auto h-12">
                 </a>
+                <h2 class="mt-6 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    {{ $title ?? 'Selamat Datang' }}
+                </h2>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    {{ $subtitle ?? 'Silakan masuk untuk melanjutkan.' }}
+                </p>
+            </div>
 
-                <div class="flex flex-col gap-6">
-                    <div class="rounded-xl border bg-white dark:bg-stone-950 dark:border-stone-800 text-stone-800 shadow-xs">
-                        <div class="px-10 py-8">{{ $slot }}</div>
-                    </div>
+            <div class="w-full max-w-md bg-white rounded-xl shadow-lg dark:bg-slate-800">
+                <div class="px-8 py-8 md:px-10">
+                    {{ $slot }}
                 </div>
             </div>
         </div>
-        @fluxScripts
+        @livewireScripts
     </body>
 </html>
