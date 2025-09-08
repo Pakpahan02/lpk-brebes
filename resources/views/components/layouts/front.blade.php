@@ -20,12 +20,12 @@
 
             {{-- Menu --}}
             <ul class="hidden md:flex flex-1 justify-end ml-10">
-                <li><a href="/profile" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Profile</a></li>
-                <li><a href="/news" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
-                <li><a href="#" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Loker</a></li>
-                <li><a href="/training" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Pelatihan</a></li>
-                <li><a href="/contact-us" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Hubungi Kami</a></li>
-                <li><a href="/login" class="text-slate-500 hover:text-slate-700 font-medium">Login</a></li>
+                <li><a href="{{ url('/profile') }}" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Profile</a></li>
+                <li><a href="{{ url('/news') }}" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Berita</a></li>
+                <li><a href="{{ url('#') }}" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Loker</a></li>
+                <li><a href="{{ url('/training') }}" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Pelatihan</a></li>
+                <li><a href="{{ url('/contact-us') }}" class="text-slate-500 hover:text-slate-700 font-medium mr-8">Hubungi Kami</a></li>
+                <li><a href="{{ url('/login') }}" class="text-slate-500 hover:text-slate-700 font-medium">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -53,9 +53,9 @@
                     {{-- Kolom ini bisa Anda isi dengan link statis atau dinamis --}}
                     <h4 class="font-semibold mb-2">Informasi</h4>
                     <ul class="space-y-1">
-                        <li><a href="/profile" class="hover:underline">Tentang Kami</a></li>
-                        <li><a href="/contact-us" class="hover:underline">Kontak</a></li>
-                        <li><a href="#" class="hover:underline">FAQ</a></li>
+                        <li><a href="{{ url('/profile') }}" class="hover:underline">Tentang Kami</a></li>
+                        <li><a href="{{ url('/contact-us') }}" class="hover:underline">Kontak</a></li>
+                        <li><a href="{{ url('#') }}" class="hover:underline">FAQ</a></li>
                     </ul>
                 </div>
                 <div>

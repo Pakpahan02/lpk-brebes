@@ -29,7 +29,7 @@
                         <p class="mt-2 text-sm md:text-base line-clamp-3 md:line-clamp-4 max-w-2xl">
                             {{ Str::limit(strip_tags($latestTraining->description), 200) }}
                         </p>
-                        <a href="{{ route('traning.show', $latestTraining->id) }}"
+                        <a href="{{ route('training.show', $latestTraining->id) }}"
                            class="inline-flex items-center mt-4 px-4 py-2 bg-orange-600 text-white rounded-full font-medium transition-all duration-300 hover:bg-orange-700">
                             Baca Selengkapnya
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
