@@ -4,6 +4,9 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
+
+$appPrefix = env('APP_PATH_PREFIX');
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -46,5 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
+
+Livewire::setUpdateRoute(fn ($handle) => Route::post("/{$appPrefix}/livewire/update", $handle));
+Livewire::setScriptRoute(fn ($handle) => Route::post("/{$appPrefix}/livewire/livewire.js", $handle));
 
 require __DIR__.'/auth.php';
